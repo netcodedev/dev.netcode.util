@@ -6,3 +6,5 @@ build
 
 # Ignore eclipse settings
 .settings/
+gradle.properties
+secring.gpg

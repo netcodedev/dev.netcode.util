@@ -6,8 +6,8 @@ import lombok.Getter;
  * Represents a message which should be logged to an implementation of {@link Logger}.<br>
  * Includes at least the {@link LogLevel} and message. Can additionally include the 
  * stacktrace offset which is a variable that represents the depth of the callstack whenever
- * a message should be logged. It can be used to display the class that called 
- * {@link Logger.log(LogLevel, String)}.<br>
+ * a message should be logged. It can be used to display the class that
+ * called {@link Logger#log(LogLevel, String)}.<br>
  * It can also include an array of stacktraces which is usually generated whenever an Exception
  * is thrown. This array can be used to customly display the stacktrace.
  */

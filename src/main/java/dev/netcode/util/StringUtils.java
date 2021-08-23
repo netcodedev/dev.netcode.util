@@ -116,7 +116,7 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Translates a String in the form of key=value&key2=value2... to a {@link HashMap}
+	 * Translates a String in the form of key=value&amp;key2=value2... to a {@link HashMap}
 	 * @param input string
 	 * @return {@link HashMap} representing the input string
 	 */
