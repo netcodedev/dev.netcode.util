@@ -5,10 +5,11 @@
 build
 
 # Ignore eclipse settings
-.settings/
+.settings
 
 # Ignore compiled binaries
-bin/
+bin
+*.class
 
 # Ignore files with sensizive data
 gradle.properties
