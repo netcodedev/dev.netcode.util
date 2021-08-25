@@ -11,13 +11,21 @@ public class Result<T> {
 	private String error;
 	
 	/**
-	 * Instantiates Result and sets either the value or error
+	 * Instantiates Result and sets either the value or error.<br>
+	 * Only one of both can be set, error is preferred to prevent
+	 * unexpected behavior.
 	 * @param value if successful or null
 	 * @param error if failed or null
+	 * @throws IllegalArgumentException in case both parameters are set to null
 	 */
 	public Result(T value, String error){
-		this.value = value;
-		this.error = error;
+		if(error == null) {
+			if(value == null)
+				throw new IllegalArgumentException("Result expects exactly one parameter to be not-null");
+			this.value = value;
+		} else {
+			this.error = error;
+		}
 	}
 	
 	/**

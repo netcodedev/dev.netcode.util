@@ -6,5 +6,10 @@ build
 
 # Ignore eclipse settings
 .settings/
+
+# Ignore compiled binaries
+bin/
+
+# Ignore files with sensizive data
 gradle.properties
 secring.gpg

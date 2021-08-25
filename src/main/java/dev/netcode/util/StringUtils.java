@@ -19,7 +19,10 @@ public class StringUtils {
 
 	/**
 	 * This class adds spaces to the end of the given string so that
-	 * the total length of the string is equal to totalLength
+	 * the total length of the string is equal to totalLength.
+	 * If totalLength is less or equal to the strings length no spaces
+	 * are added and original input is returned. If input string is null,
+	 * the result will be aswell.
 	 * @param string to pad
 	 * @param totalLength of the result string
 	 * @return string that has been filled up with spaces to the length of totalLength
@@ -30,7 +33,10 @@ public class StringUtils {
 
 	/**
 	 * This class adds spaces to the begin of the given string so that
-	 * the total length of the string is equal to totalLength
+	 * the total length of the string is equal to totalLength.
+	 * If totalLength is less or equal to the strings length no spaces
+	 * are added and original input is returned. If input string is null,
+	 * the result will be aswell.
 	 * @param string to pad
 	 * @param totalLength of the result string
 	 * @return string that has been filled up with spaces to the length of totalLength
@@ -40,7 +46,8 @@ public class StringUtils {
 	}
 	
 	/**
-	 * UTF-8 decodes an URL
+	 * Decodes escaped special chars from URLs like '%20' to their
+	 * UTF-8 counterpart
 	 * @param encoded URL
 	 * @return decoded URL
 	 */
@@ -59,6 +66,9 @@ public class StringUtils {
 	 * @return hexadecimal representation of SHA-256 applied string
 	 */
 	public static String applySha256(String input){		
+		if(input == null) {
+			throw new IllegalArgumentException("input is null");
+		}
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");	        
 			//Applies sha256 to our input, 
@@ -70,8 +80,7 @@ public class StringUtils {
 				hexString.append(hex);
 			}
 			return hexString.toString();
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -116,11 +125,14 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Translates a String in the form of key=value&amp;key2=value2... to a {@link HashMap}
+	 * Translates a String in the form of key=value&amp;key2=value2... to a {@link HashMap}.
 	 * @param input string
 	 * @return {@link HashMap} representing the input string
 	 */
-	public static HashMap<String, String> stringToMap(String input) {  
+	public static HashMap<String, String> stringToMap(String input) { 
+		if(input == null) {
+			throw new IllegalArgumentException("input is null");
+		}
 		HashMap<String, String> map = new HashMap<String, String>();
 		String[] nameValuePairs = input.split("&");
 		for (String nameValuePair : nameValuePairs) {
@@ -135,23 +147,25 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Inserts a char into a string every n chars. Adds linebreak at the end.
+	 * Inserts a char into a string after every n chars. 
 	 * Can for example be used to add a linebreak every n characters
 	 * @param data to insert the chars into
 	 * @param n offset between inserts
 	 * @param insert char
 	 * @return byte array with inserted chars
 	 */
-	public static byte[] chunkSplit(String data, int n, char insert) {
+	public static byte[] chunkInsert(String data, int n, char insert) {
+		if(data == null) {
+			throw new IllegalArgumentException("input String is null");
+		}
 		ArrayList<Byte> byteList = new ArrayList<Byte>();
 		
 		for(int i = 0; i<data.length(); i++) {
+			byteList.add((byte)data.charAt(i));
 			if((i+1)%n==0) {
 				byteList.add((byte)insert);
 			}
-			byteList.add((byte)data.charAt(i));
 		}
-		byteList.add((byte)'\n');
 		byte[] result = new byte[byteList.size()];
 		for(int i = 0; i<byteList.size(); i++) {
 			result[i] = byteList.get(i);
@@ -166,6 +180,12 @@ public class StringUtils {
 	 * @return array of strings representing splitted input
 	 */
 	public static String[] splitStringEvery(String s, int interval) {
+		if(s == null) {
+			throw new IllegalArgumentException("input string is null");
+		}
+		if(interval < 0) {
+			throw new IllegalArgumentException("interval must be greater or equal to 0");
+		}
 	    int arrayLength = (int) Math.ceil(((s.length() / (double)interval)));
 	    String[] result = new String[arrayLength];
 
@@ -181,7 +201,8 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Returns the file extension of a file
+	 * Returns the file extension of a file.
+	 * If file has no extension an empty String is returned
 	 * @param file to get the extension of
 	 * @return the files extension
 	 */
@@ -193,6 +214,5 @@ public class StringUtils {
         	return "";
         }
     }
-	
 	
 }
