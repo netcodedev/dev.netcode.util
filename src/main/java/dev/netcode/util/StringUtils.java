@@ -215,4 +215,49 @@ public class StringUtils {
         }
     }
 	
+	/**
+	 * Converts a byte array to hexadecimal represented String
+	 * @param bytes to transform
+	 * @return hexadecimal representation
+	 */
+	public static String bytesToHex(byte[] bytes) {
+		StringBuilder string = new StringBuilder();
+		for (byte b : bytes) {
+			String hexString = Integer.toHexString(0x00FF & b);
+			string.append(hexString.length() == 1 ? "0" + hexString : hexString);
+		}
+		return string.toString();
+	}
+	
+	/**
+	 * Converts a hexadecimal string to byte array
+	 * @param string to transform
+	 * @return byte representation
+	 */
+	public static byte[] hexStringToByteArray(String string) {
+	    int len = string.length();
+	    byte[] data = new byte[len / 2];
+	    for (int i = 0; i < len; i += 2) {
+	        data[i / 2] = (byte) ((Character.digit(string.charAt(i), 16) << 4)
+	                             + Character.digit(string.charAt(i+1), 16));
+	    }
+	    return data;
+	}
+	
+	/**
+	 * Decodes a hexadecimal string
+	 * @param hexStr hexadecimal string to be decoded
+	 * @return decoded string
+	 */
+	public static String hexToString(String hexStr) {
+	    StringBuilder output = new StringBuilder("");
+	     
+	    for (int i = 0; i < hexStr.length(); i += 2) {
+	        String str = hexStr.substring(i, i + 2);
+	        output.append((char) Integer.parseInt(str, 16));
+	    }
+	     
+	    return output.toString();
+	}
+	
 }
