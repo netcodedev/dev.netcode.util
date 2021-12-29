@@ -5,9 +5,12 @@ plugins {
 }
 
 group = 'dev.netcode'
-version = '0.0.2'
+version = '0.0.3'
 
 java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
     withJavadocJar()
     withSourcesJar()
 }
@@ -18,7 +21,7 @@ publishing {
             from components.java
             groupId = 'dev.netcode'
             artifactId = 'util'
-			version = '0.0.2'
+			version = '0.0.3'
             pom {
                 name = 'netcodes Java Utilities'
                 description = 'Utility functions for Java'

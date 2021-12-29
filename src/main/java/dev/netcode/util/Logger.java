@@ -15,13 +15,15 @@ public abstract class Logger {
 	 * Logs a message with the specified loglevel to the desired location
 	 * @param loglevel of the message
 	 * @param message as String
+	 * @return the logged message
 	 */
-	public abstract void log(LogLevel loglevel, String message);
+	public abstract String log(LogLevel loglevel, String message);
 	
 	/**
 	 * Logs a message from LogMessage object to the desired location
 	 * @param message which should be logged
+	 * @return the logged message
 	 */
-	public abstract void log(LogMessage message);
+	public abstract String log(LogMessage message);
 	
 }
