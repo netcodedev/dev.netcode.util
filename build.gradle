@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'eclipse'
 }
 
 group = 'dev.netcode'
@@ -44,7 +45,7 @@ publishing {
                     url = 'https://github.com/N3TC0D3/dev.netcode.util'
                 }
             }
-            
+
         }
     }
     repositories {
@@ -79,12 +80,12 @@ repositories {
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
-    
+
     //LOMBOK
     implementation 'org.projectlombok:lombok:1.18.20'
     compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
-	
+
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
