@@ -31,7 +31,6 @@ public class Utils {
 	 * that called this function (think about it. it makes sense). That way you
 	 * can find out which class called a specific function.
 	 * @return the caller of the function that called this function
-	 * @throws ClassNotFoundException shouldn't really be thrown
 	 */
 	public static String getCaller() {
 		return getCaller(1);
@@ -43,7 +42,6 @@ public class Utils {
 	 * can find out which class called a specific function.
 	 * @param offset to add to the stack trace if it was passed through any other class
 	 * @return the name of the calling class
-	 * @throws ClassNotFoundException shouldn't really be thrown
 	 */
 	public static String getCaller(int offset) {
 		var elem = Thread.currentThread().getStackTrace()[offset+2];
