@@ -33,7 +33,7 @@ public class Utils {
 	 * @return the caller of the function that called this function
 	 * @throws ClassNotFoundException shouldn't really be thrown
 	 */
-	public static String getCaller() throws ClassNotFoundException {
+	public static String getCaller() {
 		return getCaller(1);
 	}
 	
@@ -45,9 +45,14 @@ public class Utils {
 	 * @return the name of the calling class
 	 * @throws ClassNotFoundException shouldn't really be thrown
 	 */
-	public static String getCaller(int offset) throws ClassNotFoundException {
+	public static String getCaller(int offset) {
 		var elem = Thread.currentThread().getStackTrace()[offset+2];
-		var className = Class.forName(elem.getClassName()).getSimpleName();
+		String className = null;
+		try {
+			className = Class.forName(elem.getClassName()).getSimpleName();
+		} catch (ClassNotFoundException e) {
+			//this should be safe to be ignored
+		}
 		return className;
 	}
 	
