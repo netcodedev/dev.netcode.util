@@ -80,7 +80,7 @@ repositories {
 }
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:6.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.1.1'
 
     //LOMBOK
     implementation 'org.projectlombok:lombok:1.18.46'
